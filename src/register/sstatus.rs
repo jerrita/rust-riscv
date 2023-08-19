@@ -50,6 +50,14 @@ impl Sstatus {
         }
     }
 
+    #[inline]
+    pub fn set_spp(&mut self, spp: SPP) {
+        match spp {
+            SPP::Supervisor => self.bits.set_bit(8, true),
+            SPP::User => self.bits.set_bit(8, false),
+        };
+    }
+
     /// The status of the floating-point unit
     #[inline]
     pub fn fs(&self) -> FS {
